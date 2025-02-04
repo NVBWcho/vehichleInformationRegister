@@ -22,7 +22,7 @@ public class GenericWagonDoorType {
     private Integer widthOfDoor_D3041;
 
 
-    @Column
+    @Column(unique = true)
     private String doorTypeAbbreviation;
 
     public Long getId() {

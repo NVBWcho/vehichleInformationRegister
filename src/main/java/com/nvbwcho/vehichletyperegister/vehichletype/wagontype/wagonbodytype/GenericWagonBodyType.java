@@ -8,7 +8,7 @@ import jakarta.persistence.*;
 @Table(name="wagonbodytype")
 
 public class GenericWagonBodyType {
-    public GenericWagonBodyType(ExtendedBoolean informationDisplayInternal_D3020, ExtendedBoolean informationDisplayExternal_D3021, ExtendedBoolean loudspeakerAutomatic_D3030, ExtendedBoolean loudSpeakerManual_D3031, ExtendedBoolean areaForMobilityRestrictedAvailable_D3050, String locationOfMobilityAreaForMobilityRestricted_D3051, ExtendedBoolean toiletAvailable_D3060, ExtendedBoolean accessibleToiletAvailable_D3061, ExtendedBoolean ticketMachineAvailable_D3070, Integer widthOfWagonAtDoor_D3090, Integer minimumHeightOfFloorFromGround_D3100, Integer heightOfLowestStep_D3101, Boolean hasStairs_D3110, Integer heightOfStep_D3111, Integer numberOfSteps_D3112, ExtendedBoolean foldableSteps_D3113, String bodyTypeAbbreviation) {
+    public GenericWagonBodyType(ExtendedBoolean informationDisplayInternal_D3020, ExtendedBoolean informationDisplayExternal_D3021, ExtendedBoolean loudspeakerAutomatic_D3030, ExtendedBoolean loudSpeakerManual_D3031, ExtendedBoolean areaForMobilityRestrictedAvailable_D3050, String locationOfMobilityAreaForMobilityRestricted_D3051, ExtendedBoolean toiletAvailable_D3060, ExtendedBoolean accessibleToiletAvailable_D3061, ExtendedBoolean ticketMachineAvailable_D3070, Integer widthOfWagonAtDoor_D3090, Integer minimumHeightOfFloorFromGround_D3100, Integer heightOfLowestStep_D3101, Boolean hasStairs_D3110, Integer heightOfStep_D3111, Integer numberOfSteps_D3112, Boolean foldableSteps_D3113, String bodyTypeAbbreviation) {
         this.informationDisplayInternal_D3020 = informationDisplayInternal_D3020;
         this.informationDisplayExternal_D3021 = informationDisplayExternal_D3021;
         this.loudspeakerAutomatic_D3030 = loudspeakerAutomatic_D3030;
@@ -52,11 +52,11 @@ public class GenericWagonBodyType {
         this.numberOfSteps_D3112 = numberOfSteps_D3112;
     }
 
-    public ExtendedBoolean getFoldableSteps_D3113() {
+    public Boolean getFoldableSteps_D3113() {
         return foldableSteps_D3113;
     }
 
-    public void setFoldableSteps_D3113(ExtendedBoolean foldableSteps_D3113) {
+    public void setFoldableSteps_D3113(Boolean foldableSteps_D3113) {
         this.foldableSteps_D3113 = foldableSteps_D3113;
     }
 
@@ -119,9 +119,9 @@ public class GenericWagonBodyType {
 
 
     @Column
-    private ExtendedBoolean foldableSteps_D3113;
+    private Boolean foldableSteps_D3113;
 
-    @Column
+    @Column(unique = true)
     private String bodyTypeAbbreviation;
 
     public String getBodyTypeAbbreviation() {
