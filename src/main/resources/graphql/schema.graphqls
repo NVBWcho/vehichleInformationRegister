@@ -1,0 +1,19 @@
+type Query {
+    runTest(greeting: String):String
+}
+
+
+type VehicleBodyResponse {
+    id: ID
+    informationDisplayInternal_D3020:ExtendedBoolean
+    
+
+
+}
+
+enum ExtendedBoolean {
+    AVAILABLE,
+    UNAVAILABLE,
+    UNKNOWN
+}
+

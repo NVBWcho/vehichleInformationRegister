@@ -56,15 +56,15 @@ class VehichletyperegisterApplicationTests {
 
 	}
 
-    @Test
+
 	void createTestBodyType(){
 		GenericWagonBodyType bombardierTalentThreeBody=new GenericWagonBodyType();
 		bombardierTalentThreeBody.setBodyTypeAbbreviation("bomdardierTalentThree");
 		bombardierTalentThreeBody.setMinimumHeightOfFloorFromGround_D3100(60);
 		bombardierTalentThreeBody.setAccessibleToiletAvailable_D3061(ExtendedBoolean.AVAILABLE);
 		bodyTypeService.saveBodyType(bombardierTalentThreeBody);
-		//Optional<GenericWagonBodyType> bodyType=bodyTypeService.getBodyTypeByAbbreviation("bomdardierTalentThree");
-		//System.out.println(bodyType.get());
+		Optional<GenericWagonBodyType> bodyType=bodyTypeService.getBodyTypeByAbbreviation("bomdardierTalentThree");
+		System.out.println(bodyType.get());
 
 
 

@@ -75,6 +75,11 @@ public class BodyTypeService {
     }
 
 
+    public GenericWagonBodyType editBodyTypeDetails(BodyTypeDao bodyTypeDao){
+        return  null;
+    }
+
+
 
 
 }

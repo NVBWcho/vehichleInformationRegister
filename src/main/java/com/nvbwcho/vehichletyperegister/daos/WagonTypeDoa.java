@@ -26,4 +26,12 @@ public class WagonTypeDoa {
     public void setDoorTypeAbbreviation(String doorTypeAbbreviation) {
         this.doorTypeAbbreviation = doorTypeAbbreviation;
     }
+
+    @Override
+    public String toString() {
+        return "WagonTypeDoa{" +
+                "bodyTypeAbbreviation='" + bodyTypeAbbreviation + '\'' +
+                ", doorTypeAbbreviation='" + doorTypeAbbreviation + '\'' +
+                '}';
+    }
 }

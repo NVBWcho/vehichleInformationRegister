@@ -1,6 +1,7 @@
 package com.nvbwcho.vehichletyperegister.services;
 
 import com.nvbwcho.vehichletyperegister.daos.WagonTypeDoa;
+import com.nvbwcho.vehichletyperegister.exceptions.NonUniqueValueException;
 import com.nvbwcho.vehichletyperegister.repositories.GenericDoorTypeRepo;
 import com.nvbwcho.vehichletyperegister.repositories.GenericWagonBodyTypeRepo;
 import com.nvbwcho.vehichletyperegister.repositories.WagonTypeRepo;
@@ -27,6 +28,12 @@ public class WagonTypeService {
     @Autowired
     private GenericDoorTypeRepo genericDoorTypeRepo;
 
+    @Autowired
+    private BodyTypeService bodyTypeService;
+
+    @Autowired
+    private DoorTypeService doorTypeService;
+
 
     public void saveWagonType(WagonType wagonType){
         wagonTypeRepo.save(wagonType);
@@ -40,14 +47,30 @@ public class WagonTypeService {
 
 
     public Optional<WagonType> addNewWagonType(WagonTypeDoa wagonTypeDoa){
-        WagonType wagonType=new WagonType();
-        Optional<GenericWagonBodyType> inputBodyType=genericWagonBodyTypeRepo.findByBodyTypeAbbreviation(wagonTypeDoa.getBodyTypeAbbreviation());
-        Optional<GenericWagonDoorType> inputDoorType=genericDoorTypeRepo.findByDoorTypeAbbreviation(wagonTypeDoa.getDoorTypeAbbreviation());
-        wagonType.setGenericWagonBodyType(inputBodyType.get());
-        wagonType.setGenericWagonDoorType(inputDoorType.get());
-        wagonType.setVehichleTyeAbbreviation(inputBodyType.get().getBodyTypeAbbreviation()+":"+inputDoorType.get().getDoorTypeAbbreviation());
+        //System.out.println(wagonTypeDoa.getBodyTypeAbbreviation());
+        //System.out.println(wagonTypeDoa.getDoorTypeAbbreviation());
 
-        return Optional.of(wagonTypeRepo.save(wagonType));
+
+        try {
+
+
+            Optional<GenericWagonBodyType> bodyType=bodyTypeService.getBodyTypeByAbbreviation("bomdardierTalentThree");
+            System.out.println(bodyType);
+            Optional<GenericWagonBodyType> inputBodyType=bodyTypeService.getBodyTypeByAbbreviation(wagonTypeDoa.getBodyTypeAbbreviation());
+            System.out.println(inputBodyType);
+            Optional<GenericWagonDoorType> inputDoorType=doorTypeService.getDoorTypeByAbbreviation(wagonTypeDoa.getDoorTypeAbbreviation());
+
+            WagonType wagonType=new WagonType(inputBodyType.get(),inputDoorType.get());
+
+            wagonType.setVehichleTyeAbbreviation(inputBodyType.get().getBodyTypeAbbreviation()+":"+inputDoorType.get().getDoorTypeAbbreviation());
+            return Optional.of(wagonTypeRepo.save(wagonType));
+        }catch (Exception e){
+            System.out.println("i am here");
+            throw  new NonUniqueValueException("this wagontype already exists");
+        }
+
+
+
 
 
     }

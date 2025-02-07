@@ -12,12 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 import java.util.List;
 import java.util.Optional;
 
 @SpringBootApplication
-public class VehichletyperegisterApplication implements CommandLineRunner {
+public class VehichletyperegisterApplication  {
 
 
 	@Autowired
@@ -34,10 +35,13 @@ public class VehichletyperegisterApplication implements CommandLineRunner {
 		SpringApplication.run(VehichletyperegisterApplication.class, args);
 	}
 
-	@Override
-	public void run(String... args) throws Exception {
+	@Bean
+	public CommandLineRunner initializeDatbase() {
 
-		createTestWagonType();
+		return  args -> {
+			createTestWagonType();
+
+		};
 
 	}
 
@@ -63,8 +67,8 @@ public class VehichletyperegisterApplication implements CommandLineRunner {
 		bombardierTalentThreeBody.setMinimumHeightOfFloorFromGround_D3100(60);
 		bombardierTalentThreeBody.setAccessibleToiletAvailable_D3061(ExtendedBoolean.AVAILABLE);
 		bodyTypeService.saveBodyType(bombardierTalentThreeBody);
-		//Optional<GenericWagonBodyType> bodyType=bodyTypeService.getBodyTypeByAbbreviation("bomdardierTalentThree");
-		//System.out.println(bodyType.get());
+		Optional<GenericWagonBodyType> bodyType=bodyTypeService.getBodyTypeByAbbreviation("bomdardierTalentThree");
+		System.out.println(bodyType.get());
 
 
 

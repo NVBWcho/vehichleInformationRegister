@@ -24,17 +24,26 @@ public  class WagonType {
     @JoinColumn(name="wagondoortype_id")
     private GenericWagonDoorType genericWagonDoorType;
 
-    @Column
+    @Column(unique = true)
+
     private String vehichleTyeAbbreviation;
+
+    public WagonType(GenericWagonBodyType genericWagonBodyType, GenericWagonDoorType genericWagonDoorType) {
+        this.genericWagonBodyType = genericWagonBodyType;
+        this.genericWagonDoorType = genericWagonDoorType;
+
+    }
+
+    public WagonType() {
+
+    }
 
     public WagonType(GenericWagonBodyType genericWagonBodyType, GenericWagonDoorType genericWagonDoorType, String vehichleTyeAbbreviation) {
         this.genericWagonBodyType = genericWagonBodyType;
         this.genericWagonDoorType = genericWagonDoorType;
-        this.vehichleTyeAbbreviation = vehichleTyeAbbreviation;
+        this.vehichleTyeAbbreviation=vehichleTyeAbbreviation;
     }
 
-    public WagonType() {
-    }
 
     @Override
     public String toString() {
