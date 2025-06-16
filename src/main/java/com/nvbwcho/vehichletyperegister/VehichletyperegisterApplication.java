@@ -90,4 +90,8 @@ public class VehichletyperegisterApplication  {
 		}
 	}
 
+	void editTestBodyType(){
+
+	}
+
 }

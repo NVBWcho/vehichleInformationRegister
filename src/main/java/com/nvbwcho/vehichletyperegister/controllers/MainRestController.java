@@ -59,6 +59,12 @@ public class MainRestController {
 
     }
 
+    @PutMapping("/editBodyDetails")
+    public  ResponseEntity<GenericWagonBodyType> editBodyType(@RequestBody GenericWagonBodyType genericWagonBodyType){
+        GenericWagonBodyType newBodyType=bodyTypeService.editBodyTypeDetails(genericWagonBodyType);
+        return  new ResponseEntity<>(newBodyType,HttpStatus.OK);
+    }
+
 
     @PostMapping("/addnewDoorType")
     public ResponseEntity<GenericWagonDoorType> addNewWagonDoorType(@RequestBody DoorTypeDao doorTypeDao) {

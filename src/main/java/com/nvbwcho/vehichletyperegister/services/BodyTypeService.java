@@ -75,8 +75,12 @@ public class BodyTypeService {
     }
 
 
-    public GenericWagonBodyType editBodyTypeDetails(BodyTypeDao bodyTypeDao){
-        return  null;
+    public GenericWagonBodyType editBodyTypeDetails(GenericWagonBodyType genericWagonBodyType){
+
+        GenericWagonBodyType newBodyType=genericWagonBodyTypeRepo.save(genericWagonBodyType);
+        return  newBodyType;
+
+
     }
 
 
